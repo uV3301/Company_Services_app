@@ -1,5 +1,5 @@
 # Yehlo app
-<br>
+
 
 ----
 A company service app with Firebase Authentication and Firestore storage/database management systems.
@@ -25,7 +25,8 @@ flutter run          // or run the debug console
 Feel free to contribute with ❤️
 <br>
 <br>
-### Get Started with flutter here
+
+## Get Started with flutter here
 
 This project is a starting point for a Flutter application.
 
