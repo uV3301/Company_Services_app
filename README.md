@@ -18,7 +18,7 @@ flutter install      // directly install onto the connected device
 ```
 ## For debugging
 ```
-flutter run // or run the debug console
+flutter run          // or run the debug console
 ```
 
 <br>
