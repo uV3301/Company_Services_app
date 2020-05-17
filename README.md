@@ -1,8 +1,32 @@
-# yehlo_app
+# Yehlo app
 
-A new Flutter project.
 
-## Getting Started
+----
+A company service app with Firebase Authentication and Firestore storage/database management systems.
+
+<br>
+
+## Make your project
+```
+flutter pub get
+```
+```
+flutter build apk
+```
+```
+flutter install      // directly install onto the connected device
+```
+## For debugging
+```
+flutter run          // or run the debug console
+```
+
+<br>
+Feel free to contribute with ❤️
+<br>
+<br>
+
+## Get Started with flutter here
 
 This project is a starting point for a Flutter application.
 
