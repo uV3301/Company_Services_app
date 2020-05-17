@@ -68,7 +68,7 @@ class _LocationViewState extends State<LocationView> {
             SizedBox(
               height: _height * 0.03,
             ),
-            Expanded(
+            Flexible(
               child: Container(
                 decoration: BoxDecoration(
                   shape: BoxShape.rectangle,
