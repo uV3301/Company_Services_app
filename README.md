@@ -16,12 +16,16 @@ flutter build apk
 ```
 flutter install      // directly install onto the connected device
 ```
-## For debuggin
+## For debugging
 ```
 flutter run // or run the debug console
 ```
 
-## Getting Started with flutter here
+<br>
+Feel free to contribute with ❤️
+<br>
+<br>
+### Get Started with flutter here
 
 This project is a starting point for a Flutter application.
 
