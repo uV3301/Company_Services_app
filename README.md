@@ -1,5 +1,10 @@
 # Yehlo app
+<br>
+
 ----
+A company service app with Firebase Authentication and Firestore storage/database management systems.
+----
+<br>
 ## Make your project
 ```
 flutter pub get
