@@ -1,8 +1,21 @@
-# yehlo_app
+# Yehlo app
+----
+## Make your project
+```
+flutter pub get
+```
+```
+flutter build apk
+```
+```
+flutter install      // directly install onto the connected device
+```
+## For debuggin
+```
+flutter run // or run the debug console
+```
 
-A new Flutter project.
-
-## Getting Started
+## Getting Started with flutter here
 
 This project is a starting point for a Flutter application.
 
