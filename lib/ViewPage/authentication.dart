@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import '../services/auth_service.dart';
 import 'package:auto_size_text/auto_size_text.dart';
 import '../Widgets/provider.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 
 final primaryColor = const Color(0xFF26A69A);
 enum AuthFormType { signUp, signIn }
@@ -81,7 +82,6 @@ class _AuthentViewState extends State<AuthentView> {
         child: SafeArea(
           child: Column(
             children: <Widget>[
-              
               showAlert(),
               SizedBox(
                 height: _height * 0.025,
@@ -103,36 +103,46 @@ class _AuthentViewState extends State<AuthentView> {
       ),
     );
   }
-  Widget showAlert(){
-    if(_error != null){
-      return Container( 
+
+  Widget showAlert() {
+    if (_error != null) {
+      return Container(
         color: Colors.greenAccent,
         width: double.infinity,
-        height: MediaQuery.of(context).size.height *0.08,
+        height: MediaQuery.of(context).size.height * 0.08,
         padding: EdgeInsets.all(8),
-        child: Row(children: <Widget>[
-          Padding(
-            padding: const EdgeInsets.only(left:8, right: 8),
-            child: Icon(Icons.error),
-          ),
-          Expanded(child: AutoSizeText(_error, maxLines: 3,),),
-          Padding(
-            padding: const EdgeInsets.only(left:8.0),
-            child: IconButton(
-              icon: Icon(Icons.close),
-              onPressed: () {
-                setState(() {
-                  _error = null;
-                });
-              },
+        child: Row(
+          children: <Widget>[
+            Padding(
+              padding: const EdgeInsets.only(left: 8, right: 8),
+              child: Icon(Icons.error),
             ),
-          )
-
-        ],),
+            Expanded(
+              child: AutoSizeText(
+                _error,
+                maxLines: 3,
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.only(left: 8.0),
+              child: IconButton(
+                icon: Icon(Icons.close),
+                onPressed: () {
+                  setState(() {
+                    _error = null;
+                  });
+                },
+              ),
+            )
+          ],
+        ),
       );
     }
-    return SizedBox(height: 0,);
+    return SizedBox(
+      height: 0,
+    );
   }
+
   AutoSizeText buildHeaderText() {
     String _header;
     if (authFormType == AuthFormType.signUp) {
@@ -181,7 +191,6 @@ class _AuthentViewState extends State<AuthentView> {
         onSaved: (val) => _pw = val,
         obscureText: true,
         validator: PasswordValidator.validate,
-
       ),
     );
     textfields.add(SizedBox(

@@ -7,6 +7,7 @@ import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/widgets.dart';
 import 'package:intl/intl.dart';
 import 'package:auto_size_text/auto_size_text.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 
 final primaryColor = const Color(0xFF26A69A);
 
@@ -25,6 +26,7 @@ class _LocationViewState extends State<LocationView> {
     widget.userData.loc = position.toString();
   }
 
+  bool onLoading = false;
   final db = Firestore.instance;
   final FirebaseStorage _storage =
       FirebaseStorage(storageBucket: 'gs://yelho-application.appspot.com');
@@ -40,6 +42,7 @@ class _LocationViewState extends State<LocationView> {
     });
   }
 
+  final primaryColor = const Color(0xFF26A69A);
   @override
   Widget build(BuildContext context) {
     final _width = MediaQuery.of(context).size.width;
@@ -86,25 +89,39 @@ class _LocationViewState extends State<LocationView> {
             SizedBox(
               height: _height * 0.08,
             ),
-            Padding(
-              padding: const EdgeInsets.all(25.0),
-              child: RaisedButton(
-                shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(30)),
-                color: primaryColor,
-                onPressed: () async {
-                  // save data to firebase
-                  await _getCurrentLocation();
-                  await _startImageUpload();
-                  await db.collection("PG_info").add(widget.userData.toJson());
-                  Navigator.of(context).popUntil((route) => route.isFirst);
-                },
-                child: Text(
-                  "Finish",
-                  style: TextStyle(fontSize: 18, color: Colors.white),
-                ),
-              ),
-            )
+            onLoading
+                ? Padding(
+                  padding: const EdgeInsets.all(20),
+                  child: SpinKitRotatingCircle(
+                      color: primaryColor,
+                      size: 50.0,
+                    ),
+                )
+                : Padding(
+                    padding: const EdgeInsets.all(25.0),
+                    child: RaisedButton(
+                      shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(30)),
+                      color: primaryColor,
+                      onPressed: () async {
+                        // save data to firebase
+                        setState(() {
+                          onLoading = true;
+                        });
+                        await _getCurrentLocation();
+                        await _startImageUpload();
+                        await db
+                            .collection("PG_info")
+                            .add(widget.userData.toJson());
+                        Navigator.of(context)
+                            .popUntil((route) => route.isFirst);
+                      },
+                      child: Text(
+                        "Finish",
+                        style: TextStyle(fontSize: 18, color: Colors.white),
+                      ),
+                    ),
+                  ),
           ],
         )));
   }
